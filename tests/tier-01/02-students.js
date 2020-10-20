@@ -265,7 +265,7 @@ describe("Tier One: Students", () => {
     before(() => db.sync({ force: true }));
     afterEach(() => db.sync({ force: true }));
 
-    xit("has fields firstName, lastName, email, imageUrl, gpa", async () => {
+    it("has fields firstName, lastName, email, imageUrl, gpa", async () => {
       const student = await Student.create({
         firstName: "Sally",
         lastName: "Ride",
@@ -280,7 +280,7 @@ describe("Tier One: Students", () => {
       expect(parseFloat(student.gpa)).to.equal(3.8);
     });
 
-    xit("requires firstName, lastName, email", async () => {
+    it("requires firstName, lastName, email", async () => {
       const student = Student.build();
       try {
         await student.validate();
@@ -294,7 +294,7 @@ describe("Tier One: Students", () => {
       }
     });
 
-    xit("firstName, lastName, email cannot be empty", async () => {
+    it("firstName, lastName, email cannot be empty", async () => {
       const student = Student.build({
         firstName: "",
         lastName: "",
@@ -316,7 +316,7 @@ describe("Tier One: Students", () => {
       throw new Error("replace this error with your own test");
     });
 
-    xit("gpa must be a float between 0.0 and 4.0", async () => {
+    it("gpa must be a float between 0.0 and 4.0", async () => {
       const student = {
         firstName: "Sally",
         lastName: "Ride",
@@ -340,7 +340,7 @@ describe("Tier One: Students", () => {
       }
     });
 
-    xit("default imageUrl if left blank", () => {
+    it("default imageUrl if left blank", () => {
       const student = Student.build({
         firstName: "",
         lastName: "",
@@ -353,7 +353,7 @@ describe("Tier One: Students", () => {
   describe("Seed file", () => {
     beforeEach(seed);
 
-    xit("populates the database with at least four students", async () => {
+    it("populates the database with at least four students", async () => {
       const seededStudents = await Student.findAll();
       expect(seededStudents).to.have.lengthOf.at.least(4);
     });
