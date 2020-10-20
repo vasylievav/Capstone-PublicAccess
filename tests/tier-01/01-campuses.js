@@ -274,7 +274,7 @@ describe("Tier One: Campuses", () => {
 
     // Consider writing your GET route in server/api/campuses.js. And don't
     // forget to apply the express router to your API in server/api/index.js!
-    xit("GET /api/campuses responds with all campuses", async () => {
+    it("GET /api/campuses responds with all campuses", async () => {
       const response = await agent.get("/api/campuses").expect(200);
       expect(response.body).to.deep.equal([
         {
