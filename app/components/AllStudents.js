@@ -13,8 +13,9 @@ export class AllStudents extends React.Component {
   render() {
     return (
       <div id ="students">
+        <h2>All Students</h2>
         {
-          this.props.students.map((student) =>{
+          this.props.students.map((student) => {
             return (
             <div className ="individual-student" key={student.id}>
               <div>{`${student.firstName} ${student.lastName}`}</div>

@@ -2,15 +2,17 @@ import axios from "axios";
 
 const SET_STUDENTS = "SET_STUDENTS";
 
-export const setStudents = (students) => ({
-  type:SET_STUDENTS,
-  students
-});
+export const setStudents = (students) => (
+  {
+    type:SET_STUDENTS,
+    students
+  }
+);
 
 export const fetchStudents = () => {
-  return async (dispatch) =>{
+  return async (dispatch) => {
     try{
-      const {data} = await axios.get ("/api/students");
+      const {data} = await axios.get("/api/students");
       dispatch(setStudents(data));
     } catch (error){
         console.error(error)
