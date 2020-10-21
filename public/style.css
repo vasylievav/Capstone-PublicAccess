@@ -31,3 +31,7 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+
+a {
+  color: navy
+}
