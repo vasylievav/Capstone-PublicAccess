@@ -67,7 +67,7 @@ describe("Tier One: Students", () => {
 
     // This test is interested in the unconnected AllStudents component. It is
     // exported as a named export in app/components/AllStudents.js
-    xit("renders the students passed in as props", () => {
+    it("renders the students passed in as props", () => {
       const wrapper = mount(
         <UnconnectedAllStudents
           students={students}
@@ -78,7 +78,7 @@ describe("Tier One: Students", () => {
       expect(wrapper.text()).to.include("Sally Ride");
     });
 
-    xit("renders DIFFERENT students passed in as props", () => {
+    it("renders DIFFERENT students passed in as props", () => {
       const differentStudents = [
         {
           id: 3,
@@ -110,7 +110,7 @@ describe("Tier One: Students", () => {
     // In a later step, we'll create a thunk, and map that thunk to AllStudents
     // as getStudents. For right now, we just need to be sure the component
     // calls it after it mounts.
-    xit("calls this.props.getStudents after mount", async () => {
+    it("calls this.props.getStudents after mount", async () => {
       mount(
         <UnconnectedAllStudents
           students={students}
@@ -130,14 +130,14 @@ describe("Tier One: Students", () => {
     });
 
     describe("set/fetch students", () => {
-      xit("setStudents action creator returns a valid action", () => {
+      it("setStudents action creator returns a valid action", () => {
         expect(setStudents(students)).to.deep.equal({
           type: "SET_STUDENTS",
           students
         });
       });
 
-      xit("fetchStudents thunk creator returns a thunk that GETs /api/students", async () => {
+      it("fetchStudents thunk creator returns a thunk that GETs /api/students", async () => {
         await fakeStore.dispatch(fetchStudents());
         const [getRequest] = mockAxios.history.get;
         expect(getRequest).to.not.equal(undefined);
@@ -158,7 +158,7 @@ describe("Tier One: Students", () => {
         throw new Error("replace this error with your own test");
       });
 
-      xit("reduces on SET_STUDENTS action", () => {
+      it("reduces on SET_STUDENTS action", () => {
         const action = {
           type: "SET_STUDENTS",
           students
@@ -178,7 +178,7 @@ describe("Tier One: Students", () => {
     // This tests is expecting your component to dispatch a thunk after it mounts
     // Remember that getStudents prop from an earlier test? Now's a good time
     // for a mapDispatch.
-    xit("initializes students from the server when the application loads the /students route", async () => {
+    it("initializes students from the server when the application loads the /students route", async () => {
       const reduxStateBeforeMount = store.getState();
       expect(reduxStateBeforeMount.students).to.deep.equal([]);
       mount(
@@ -196,7 +196,7 @@ describe("Tier One: Students", () => {
 
     // This test is expecting your component to render the students from the
     // Redux store. Now's a good time for a mapState.
-    xit("<AllStudents /> renders students from the Redux store", async () => {
+    it("<AllStudents /> renders students from the Redux store", async () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={["/students"]}>
@@ -226,7 +226,7 @@ describe("Tier One: Students", () => {
     });
 
     // This test expects that you've set up a Route for AllStudents
-    xit("renders <AllStudents /> at /students", () => {
+    it("renders <AllStudents /> at /students", () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={["/students"]}>
