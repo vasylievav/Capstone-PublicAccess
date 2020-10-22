@@ -21,4 +21,13 @@ router.get ('/:id', async (req, res, next) =>{
   }
 });
 
+router.put('/', async (req, res, next) =>{
+  try{
+    const student = await Student.create(req.body);
+    res.status(201).send(student);
+  } catch (error){
+      next (error)
+  }
+});
+
 module.exports = router;

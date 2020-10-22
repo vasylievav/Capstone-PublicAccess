@@ -6,7 +6,7 @@ router.get ('/', async (req, res, next) => {
     const allCampuses = await Campus.findAll();
     res.send (allCampuses);
   } catch (error) {
-      next(error);
+      next (error);
     }
 });
 
@@ -16,8 +16,17 @@ router.get('/:id', async (req, res, next) => {
       include: { model: Student }
     });
     res.send (singleCampus);
-  } catch(error) {
-      next(error);
+  } catch (error) {
+      next (error);
+  }
+});
+
+router.put('/', async (req, res, next) => {
+  try{ 
+    const campus = await Campus.create(req.body);
+    res.status(201).send(campus);
+  } catch (error) {
+      next (error);
   }
 });
 
