@@ -14,7 +14,7 @@ export const fetchCampuses = () => {
     try{
       const {data} = await axios.get("/api/campuses");
       dispatch(setCampuses(data));
-    } catch (error){
+    } catch (error) {
       console.error(error)
     }
   }
@@ -23,7 +23,7 @@ export const fetchCampuses = () => {
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function campusesReducer(state =[], action) {
- switch (action.type){
+ switch (action.type) {
    case SET_CAMPUSES:
      return {...state, campuses:action.campuses}.campuses;
    default: return state

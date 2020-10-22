@@ -9,7 +9,7 @@ import { fetchStudents } from "../redux/students"
 export class AllStudents extends React.Component {
   componentDidMount (){
     this.props.getStudents();
-  }
+  };
 
   render() {
     return (
@@ -37,7 +37,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getStudents: ()=>dispatch(fetchStudents())
+    getStudents: () => dispatch(fetchStudents())
   };
 };
 
