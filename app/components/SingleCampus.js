@@ -4,7 +4,6 @@ import { fetchSigleCampus } from '../redux/singleCampus'
 
 export class SingleCampus extends React.Component {
   componentDidMount (){
-    //console.log ('this props=', this.props.match.params.campusId)
     this.props.getSingleCampus(this.props.match.params.campusId);
   };
 
@@ -34,7 +33,7 @@ export class SingleCampus extends React.Component {
 const mapState = (state) => {
   return {
     singleCampus: state.singleCampus
-  }
+  };
 };
 
 const mapDispatch = (dispatch) => {
@@ -43,4 +42,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(SingleCampus)
+export default connect(mapState, mapDispatch)(SingleCampus);

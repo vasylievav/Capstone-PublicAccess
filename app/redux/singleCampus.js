@@ -16,7 +16,7 @@ export const fetchSigleCampus = (id) => {
       dispatch(setSingleCampus(data))
     } catch (error) {
         console.error (error)
-    }
+     }
   }
 };
 
@@ -26,4 +26,4 @@ export default function singleCampusReducer (state = {}, action) {
       return action.campus
     default: return state
   }
-}
+};

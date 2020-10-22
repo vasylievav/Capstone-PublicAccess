@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStudents } from "../redux/students"
+import { NavLink } from "react-router-dom";
+import { fetchStudents } from "../redux/students";
+
 
 // Notice that we're exporting the AllStudents component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -19,7 +21,9 @@ export class AllStudents extends React.Component {
           this.props.students.map((student) => {
             return (
             <div className ="individual-student" key={student.id}>
+              <NavLink to={`/students/${student.id}`}>
               <div>{`${student.firstName} ${student.lastName}`}</div>
+              </NavLink>
             </div>
             )
           })
