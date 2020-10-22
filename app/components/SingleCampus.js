@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { fetchSigleCampus } from '../redux/singleCampus'
 
 export class SingleCampus extends React.Component {
@@ -20,7 +21,11 @@ export class SingleCampus extends React.Component {
         <div>
          {campus.students.map (student => {
           return (
-              <div key ={student.id}>{`${student.firstName} ${student.lastName}`}</div>
+            <div className="students-assigned" key ={student.id}>
+            <NavLink to={`/students/${student.id}`}>
+              <div>{`${student.firstName} ${student.lastName}`}</div>
+            </NavLink>  
+            </div>
           )
         })}
         </div>

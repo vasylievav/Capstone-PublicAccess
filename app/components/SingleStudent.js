@@ -1,10 +1,6 @@
-// - Write a component to display a single student with the following information:
-//   - [ ] The student's full name, email, image, and gpa
-//   - [ ] The name of their campus (or a helpful message if they don't have one)
-// - [ ] Display the appropriate student when the url matches `/students/:studentId`
 import React from "react";
 import { connect } from "react-redux";
-import campusesReducer from "../redux/campuses";
+import { NavLink } from "react-router-dom";
 import { fetchSingleStudent } from "../redux/singleStudent";
 
 export class SingleStudent extends React.Component {
@@ -21,7 +17,11 @@ export class SingleStudent extends React.Component {
         <img src={student.imageUrl}/>
         <h2>{`GPA: ${student.gpa}`}</h2>
         <h2>Student's Campus</h2>
-        <div>{!student.campus?"Has no Campus":student.campus.name}</div>
+        <div>
+          {!student.campus?"Has no Campus":
+            <NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink> 
+          }
+        </div>
       </div>
     )
   }
