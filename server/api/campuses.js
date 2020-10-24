@@ -30,4 +30,17 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.delete('/:campusId', async (req, res, next) => {
+  try{
+    const numberOfCampusesDeleted = await Campus.destroy({
+      where: {
+        id:req.params.campusId
+      }
+    });
+    numberOfCampusesDeleted>0 ? res.sendStatus(204) : res.sendStatus(404);
+  } catch (error) {
+      next (error);
+  }
+});
+
 module.exports = router;
