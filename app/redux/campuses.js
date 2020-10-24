@@ -47,7 +47,7 @@ export const addCampus = (addedCampus) => {
 export default function campusesReducer(state = [], action) {
  switch (action.type) {
     case SET_CAMPUSES:
-       return {...state, campuses: action.campuses}.campuses;
+         return {...state, campuses: action.campuses}.campuses;
     case CREATE_NEW_CAMPUS:
         return {...state, campuses: [...state, action.addedCampus]}.campuses;
    default: return state

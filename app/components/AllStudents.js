@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchStudents } from "../redux/students";
+import { AddStudent } from "./AddStudent";
 
 
 // Notice that we're exporting the AllStudents component twice. The named export
@@ -16,6 +17,7 @@ export class AllStudents extends React.Component {
   render() {
     return (
       <div id ="students">
+        <AddStudent/>
         <h2>All Students</h2>
         {
           this.props.students.map((student) => {
