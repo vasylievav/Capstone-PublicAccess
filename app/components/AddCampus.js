@@ -16,19 +16,17 @@ export class AddCampus extends React.Component {
   };
 
   handleNameChange (event) {
-    this.setState ({name:event.target.value})
+    this.setState ({name: event.target.value})
   };
 
   handleAddressChange (event) {
-    this.setState ({address:event.target.value})
+    this.setState ({address: event.target.value})
   };
 
   handleSubmit (event) {
     event.preventDefault();
-    this.props.createCampus(
-      this.state
-    )
-  }
+    this.props.createCampus(this.state);
+  };
 
   render() {
     return (
@@ -48,7 +46,7 @@ export class AddCampus extends React.Component {
 
 const mapDispatch = dispatch => (
   {
-    createCampus: newCampus =>dispatch(addCampus(newCampus))
+    createCampus: newCampus => dispatch(addCampus(newCampus))
   }
 );
 

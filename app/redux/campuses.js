@@ -34,7 +34,7 @@ export const fetchCampuses = () => {
 export const addCampus = (addedCampus) => {
   return async (dispatch) => {
     try {
-      const {data} =await axios.post("/api/campuses", addedCampus);
+      const {data} = await axios.post("/api/campuses", addedCampus);
       dispatch (createNewCampus(data))
     } catch (error) {
       console.error(error)
@@ -52,4 +52,4 @@ export default function campusesReducer(state = [], action) {
         return {...state, campuses: [...state, action.addedCampus]}.campuses;
    default: return state
  }
-}
+};
