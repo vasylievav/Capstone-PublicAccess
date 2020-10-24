@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchCampuses } from "../redux/campuses"
+import { fetchCampuses } from "../redux/campuses";
+import AddCampus from "./AddCampus";
+
 
 
 // Notice that we're exporting the AllCampuses component twice. The named export
@@ -16,6 +18,7 @@ export class AllCampuses extends React.Component {
   render() {
     return (
     <div id ="campuses">
+      <AddCampus/>
       <h2>All Campuses</h2>
       {
         this.props.campuses.map((campus) => {

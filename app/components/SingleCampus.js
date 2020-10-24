@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchSigleCampus } from '../redux/singleCampus'
+import { fetchSigleCampus } from "../redux/singleCampus";
 
 export class SingleCampus extends React.Component {
   componentDidMount (){
