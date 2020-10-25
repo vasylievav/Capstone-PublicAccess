@@ -2,7 +2,7 @@ import axios from "axios";
 
 const GET_SINGLE_STUDENT = "GET_SINGLE_STUDENT";
 
-export const setSingleStudent = (student) => (
+const setSingleStudent = (student) => (
   {
     type: GET_SINGLE_STUDENT,
     student

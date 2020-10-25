@@ -2,7 +2,7 @@ import axios from "axios";
 
 const GET_SINGLE_CAMPUS = "GET_SINGLE_CAMPUS";
 
-export const setSingleCampus = (campus) => (
+const setSingleCampus = (campus) => (
   {
     type: GET_SINGLE_CAMPUS,
     campus

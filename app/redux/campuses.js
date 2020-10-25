@@ -6,14 +6,14 @@ const CREATE_NEW_CAMPUS = "CREATE_NEW_CAMPUS";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
 
 //ACTION CREATORS
-export const setCampuses = (campuses) => (
+const setCampuses = (campuses) => (
   {
     type:SET_CAMPUSES,
     campuses
   }
 );
 
-export const createNewCampus = (addedCampus) => (
+const createNewCampus = (addedCampus) => (
   {
     type: CREATE_NEW_CAMPUS,
     addedCampus
@@ -70,7 +70,7 @@ export default function campusesReducer(state = [], action) {
     case CREATE_NEW_CAMPUS:
         return {...state, campuses: [...state, action.addedCampus]}.campuses;
     case DELETE_CAMPUS:
-        return state.filter(campus =>campus.id!=action.id);
+        return state.filter(campus => campus.id  != action.id);
    default: return state
  }
 };

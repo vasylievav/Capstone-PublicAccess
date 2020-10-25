@@ -11,10 +11,10 @@ import AddCampus from "./AddCampus";
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 
 export class AllCampuses extends React.Component {
-  constructor(){
+  constructor (){
     super()
     this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this)
-  }
+  };
 
   componentDidMount (){
     this.props.getCampuses();
@@ -31,14 +31,14 @@ export class AllCampuses extends React.Component {
       <h2>All Campuses</h2>
       {
         this.props.campuses.map((campus) => {
-          const campusID=campus.id
+          const campusID = campus.id;
           return (
             <div className ="individual-campus" key={campus.id} >
               <NavLink to={`/campuses/${campus.id}`}>
               <div>{campus.name}</div>
               <img src ={campus.imageUrl}/>
               </NavLink>
-              <button onClick={() =>this.handleDeleteButtonClick(campusID)}>X</button>
+              <button onClick={() => this.handleDeleteButtonClick(campusID)}>X</button>
             </div>
           )
         })
@@ -46,7 +46,7 @@ export class AllCampuses extends React.Component {
     </div>
     )
   }
-}
+};
 
 const mapState = (state) => {
   return {
