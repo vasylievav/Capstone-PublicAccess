@@ -45,9 +45,11 @@ export const updateCampus = (campus, id) => {
 export default function singleCampusReducer (state = {}, action) {
   switch (action.type) {
     case GET_SINGLE_CAMPUS:
-      return action.campus
+      return {...state, campus :action.campus }.campus
+     // return action.campus
     case UPDATE_SINGLE_CAMPUS:
-      return action.campus
+     // return action.campus
+     return {...state, campus:action.campus }.campus
     default: return state
   }
 };

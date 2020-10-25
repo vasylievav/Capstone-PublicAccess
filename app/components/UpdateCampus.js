@@ -5,9 +5,9 @@ import { updateCampus } from "../redux/singleCampus";
 export class UpdateCampus extends React.Component {
   constructor (props) {
     super(props);
-    this.state ={
-      name:this.props.campus.name, 
-      address:this.props.campus.address
+    this.state = {
+      name: this.props.campus.name, 
+      address: this.props.campus.address
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
