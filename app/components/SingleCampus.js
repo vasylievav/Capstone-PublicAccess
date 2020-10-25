@@ -32,7 +32,7 @@ export class SingleCampus extends React.Component {
         })}
         </div>
         <div>{!campus.students.length?"No students assigned so far":null}</div>
-        <UpdateCampus/>
+        <UpdateCampus campus={campus}/>
       </div>    
     )    
   }
