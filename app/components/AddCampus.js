@@ -34,7 +34,7 @@ export class AddCampus extends React.Component {
         <h3>Add New Campus</h3>
         <form onSubmit={this.handleSubmit}>
           <p>Name</p>
-          <input type="text" onChange={this.handleNameChange}/>
+          <input id ="nameInput" type="text" onChange={this.handleNameChange}/>
           <p>Adress</p>
           <input type="text" onChange={this.handleAddressChange}/>
           <button type="submit">Submit</button>

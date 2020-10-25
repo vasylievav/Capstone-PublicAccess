@@ -3,6 +3,7 @@ import axios from "axios";
 //ACTION TYPES
 const SET_CAMPUSES = "SET_CAMPUSES";
 const CREATE_NEW_CAMPUS = "CREATE_NEW_CAMPUS";
+const DELETE_CAMPUS = "DELETE_CAMPUS";
 
 //ACTION CREATORS
 export const setCampuses = (campuses) => (
@@ -16,6 +17,13 @@ export const createNewCampus = (addedCampus) => (
   {
     type: CREATE_NEW_CAMPUS,
     addedCampus
+  }
+);
+
+const deleteCampus = (id) => (
+  {
+    type: DELETE_CAMPUS,
+    id
   }
 );
 
@@ -42,6 +50,17 @@ export const addCampus = (addedCampus) => {
   }
 };
 
+export const deleteExistingCampus = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`/api/campuses/${id}`);
+      dispatch(deleteCampus(id));
+    } catch (error) {
+        console.error(error)
+    }
+  }
+};
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function campusesReducer(state = [], action) {
@@ -50,6 +69,8 @@ export default function campusesReducer(state = [], action) {
          return {...state, campuses: action.campuses}.campuses;
     case CREATE_NEW_CAMPUS:
         return {...state, campuses: [...state, action.addedCampus]}.campuses;
+    case DELETE_CAMPUS:
+        return state.filter(campus =>campus.id!=action.id);
    default: return state
  }
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchCampuses } from "../redux/campuses";
+import { fetchCampuses, deleteExistingCampus } from "../redux/campuses";
 import AddCampus from "./AddCampus";
 
 
@@ -11,9 +11,18 @@ import AddCampus from "./AddCampus";
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 
 export class AllCampuses extends React.Component {
+  constructor(){
+    super()
+    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this)
+  }
+
   componentDidMount (){
     this.props.getCampuses();
-  }
+  };
+
+  handleDeleteButtonClick (id){
+    this.props.deleteCampus(id);
+  };
 
   render() {
     return (
@@ -22,12 +31,14 @@ export class AllCampuses extends React.Component {
       <h2>All Campuses</h2>
       {
         this.props.campuses.map((campus) => {
+          const campusID=campus.id
           return (
             <div className ="individual-campus" key={campus.id} >
               <NavLink to={`/campuses/${campus.id}`}>
               <div>{campus.name}</div>
               <img src ={campus.imageUrl}/>
               </NavLink>
+              <button onClick={() =>this.handleDeleteButtonClick(campusID)}>X</button>
             </div>
           )
         })
@@ -45,7 +56,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getCampuses: ()=>dispatch(fetchCampuses())
+    getCampuses: () => dispatch(fetchCampuses()),
+    deleteCampus: (id) => dispatch(deleteExistingCampus(id))
   };
 };
 
