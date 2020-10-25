@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { fetchSigleCampus } from "../redux/singleCampus";
+import UpdateCampus from "./UpdateCampus";
 
 export class SingleCampus extends React.Component {
   componentDidMount (){
@@ -25,11 +26,13 @@ export class SingleCampus extends React.Component {
             <NavLink to={`/students/${student.id}`}>
               <div>{`${student.firstName} ${student.lastName}`}</div>
             </NavLink>  
+            <button>Unregister</button>
             </div>
           )
         })}
         </div>
         <div>{!campus.students.length?"No students assigned so far":null}</div>
+        <UpdateCampus/>
       </div>    
     )    
   }
