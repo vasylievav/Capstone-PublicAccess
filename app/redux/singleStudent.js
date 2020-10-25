@@ -38,7 +38,7 @@ export const updateStudent = (student, id) => {
       const {data} = await axios.put(`/api/students/${id}`, student);
       dispatch(updateSingleStudent(data))
     } catch (error) {
-        console.error (error)
+        console.error(error)
       }
   }
 };
