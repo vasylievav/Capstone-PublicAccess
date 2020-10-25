@@ -37,10 +37,25 @@ router.delete('/:studentId', async (req, res, next) =>{
         id:req.params.studentId
       }
     });
-    numbetOfStudentsDeleted>0 ? res.sendStatus(204): res.sendStatus(404);
+    numbetOfStudentsDeleted>0 ? res.sendStatus(204) : 
+      res.status(404).send('Student was Not found in DB');
   } catch (error) {
       next (error);
   }
-})
+});
+
+router.put('/:studentId', async (req,res, next) => {
+  try{
+    const studentToUpdate = await Student.update(req.body, {
+      returning:true,
+      where: {id: req.params.studentId}
+    });
+    const [numUpdated, [updatedStudent]] = studentToUpdate;
+    numUpdated>0 ? res.send(updatedStudent) : 
+     res.status(404).send('Student was Not found in DB');
+  } catch (error) {
+      next(error);
+  }
+});
 
 module.exports = router;
