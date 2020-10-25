@@ -37,6 +37,8 @@ export class AddCampus extends React.Component {
           <input id ="nameInput" type="text" onChange={this.handleNameChange}/>
           <p>Adress</p>
           <input type="text" onChange={this.handleAddressChange}/>
+          <br/>
+          <br/>
           <button type="submit">Submit</button>
         </form>
       </div>

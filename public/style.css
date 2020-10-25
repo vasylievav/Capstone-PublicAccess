@@ -18,9 +18,10 @@ body {
 
 nav {
   align-items: center;
-  background-color: #333333;
-  color: #c0c0c0;
+  background-color: lightgray;
+  color: black;
   display: flex;
+  justify-content: space-evenly;
   height: 80px;
   padding: 10px;
 }
@@ -34,4 +35,26 @@ main {
 
 a {
   color: navy
+}
+
+form {
+  margin :5px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: grey;
+  background: beige;
+}
+
+#students {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.individual-student {
+  display: flex;
+  align-items: center;
+  margin :5px;
+  padding: 5px;
 }

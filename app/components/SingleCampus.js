@@ -1,12 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchSigleCampus } from "../redux/singleCampus";
+import { fetchSigleCampus, unregisterSigleCampus } from "../redux/singleCampus";
 import UpdateCampus from "./UpdateCampus";
 
 export class SingleCampus extends React.Component {
+  constructor () {
+    super();
+    this.handleUnregisterClick = this.handleUnregisterClick.bind(this);
+  };
+
   componentDidMount (){
     this.props.getSingleCampus(this.props.match.params.campusId);
+  };
+
+  handleUnregisterClick (id) {
+    this.props.unregisterStudent(id);
   };
 
   render() {
@@ -21,13 +30,12 @@ export class SingleCampus extends React.Component {
         <h2>Assigned students:</h2>
         <div>
          {campus.students.map (student => {
-          return (
-            <div className="students-assigned" key ={student.id}>
-            <NavLink to={`/students/${student.id}`}>
-              <div>{`${student.firstName} ${student.lastName}`}</div>
-            </NavLink>  
-            <button>Unregister</button>
-            </div>
+            return (
+              <div className="students-assigned" key ={student.id}>
+              <NavLink to={`/students/${student.id}`}>
+                <div>{`${student.firstName} ${student.lastName}`}</div>
+              </NavLink>  
+              </div>
           )
         })}
         </div>
@@ -46,7 +54,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getSingleCampus: (id) => dispatch(fetchSigleCampus(id))
+    getSingleCampus: (id) => dispatch(fetchSigleCampus(id)),
+    unregisterStudent: (id) => dispatch(unregisterSigleCampus(id))
   };
 };
 

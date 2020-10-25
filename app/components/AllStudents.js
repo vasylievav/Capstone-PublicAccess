@@ -27,21 +27,23 @@ export class AllStudents extends React.Component {
     return (
       <div id ="students">
         <AddStudent/>
+        <div id="student-list">  
         <h2>All Students</h2>
-        {
-          this.props.students.map((student) => {
-            const studentID = student.id;
-            return (
-            <div className ="individual-student" key={student.id}>
-              <NavLink to={`/students/${student.id}`}>
-              <div>{`${student.firstName} ${student.lastName}`}</div>
-              </NavLink>
-              <button onClick={() => this.handleDeleteButtonClick(studentID)}>X</button>
-              <p/>
-            </div>
-            )
-          })
-        }
+          {
+            this.props.students.map((student) => {
+              const studentID = student.id;
+              return (
+              <div className ="individual-student" key={student.id}>
+                <NavLink to={`/students/${student.id}`}>
+                <div>{`${student.firstName} ${student.lastName}`}</div>
+                </NavLink>
+                <button onClick={() => this.handleDeleteButtonClick(studentID)}>X</button>
+                <br/>
+              </div>
+              )
+            })
+          }
+        </div>  
       </div>
     );
   }
